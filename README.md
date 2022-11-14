@@ -25,3 +25,5 @@ La clase ```Thread``` está definida en el espacio de nombres ```System.Threadin
 
 
 ️➡️ **Que patrón(es) o principio(s) has usado para esto?**
+
+//Se usó el patrón de Adapter

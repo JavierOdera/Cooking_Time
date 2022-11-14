@@ -15,6 +15,11 @@ namespace Full_GRASP_And_SOLID
         private IList<BaseStep> steps = new List<BaseStep>();
 
         public Product FinalProduct { get; set; }
+        public int TiempoTotal = 0;
+        public bool Cooked {get; private set;} = false;
+        public CountdownTimer contador;
+        public TimerClient cliente;
+        
 
         // Agregado por Creator
         public void AddStep(Product input, double quantity, Equipment equipment, int time)
@@ -61,6 +66,26 @@ namespace Full_GRASP_And_SOLID
             }
 
             return result;
+        }
+        public int GetCookTime()    ///////Verificar
+        {
+            
+           foreach(BaseStep step in steps)
+           {
+                TiempoTotal+=step.Time;
+           }
+           return TiempoTotal;
+        }
+        public void SetCooked()
+        {
+            this.Cooked = true;
+        }
+        public void Cook()
+        {
+            CountdownTimer contador = new CountdownTimer();
+            Client Cliente = new Client(this);
+            contador.Register(GetCookTime(),Cliente);
+
         }
     }
 }
